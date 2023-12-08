@@ -42,4 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Define the relationship with learned kanji.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function learnedKanji()
+    {
+        return $this->belongsToMany(Kanji::class, 'learned_kanji', 'user_id', 'kanji_id')->withTimestamps();
+    }
+
+    /**
+     * Define the relationship with learned kana.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function learnedKana()
+    {
+        return $this->belongsToMany(Kana::class, 'learned_kana', 'user_id', 'kana_id')->withTimestamps();
+    }
 }
