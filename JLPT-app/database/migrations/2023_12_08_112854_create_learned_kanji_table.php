@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kana', function (Blueprint $table) {
+        Schema::create('learned_kanji', function (Blueprint $table) {
             $table->id();
-            $table->string('character');
-            $table->string('pronunciation');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('kanji_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('kanji_id')->references('kanji_id')->on('kanji')->onDelete('cascade');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kana');
+        Schema::dropIfExists('learned_kanji');
     }
 };
