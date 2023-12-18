@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,26 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
- 
-Route::get('/auth/callback', function () {
-    $userProvider = Socialite::driver('google')->user();
-    $user = User::updateOrCreate(
-        [
-            'email'=> $userProvider->email
-        ],[
-            'name'=> $userProvider->name,
-            'color'=> null
-        ]
-    );
-    // Faire quelque chose avec les données utilisateur ($user)
-    $token = $user->createToken('Api token');
+// Redirect the user to the Google authentication page
+Route::get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 
-    return response()->json([
-        'token'=> $token,
-        'user' => $user,
-    ]);
-    // $user->token
-});
+// Google callback to handle the user after authentication
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
