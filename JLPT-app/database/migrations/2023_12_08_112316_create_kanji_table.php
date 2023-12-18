@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('kanji', function (Blueprint $table) {
             $table->id('kanji_id');
             $table->string('character');
+            $table->integer('strokes');
+            $table->string('grade')->nullable();
+            $table->integer('frequency')->nullable();
             $table->integer('jlpt_level')->nullable();
             $table->string('meanings');
             $table->string('readings_on');
             $table->string('readings_kun');
-            $table->integer('strokes');
             $table->string('radicals')->nullable();
             $table->timestamps();
         });

@@ -27,6 +27,8 @@ class KanjiSeeder extends Seeder
                 Kanji::create([
                     'character' => $character,
                     'strokes' => $kanjiData['strokes'],
+                    'grade' => $kanjiData['grade'],
+                    'frequency' => $kanjiData['freq'],
                     'jlpt_level' => $kanjiData['jlpt_new'],
                     'meanings' => implode(', ', $kanjiData['meanings']),
                     'readings_on' => implode(', ', $kanjiData['readings_on']),
