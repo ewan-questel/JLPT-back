@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Kana::class, 'learned_kana', 'user_id', 'kana_id')->withTimestamps();
     }
+
+    public function challenges()
+    {
+        return $this->hasMany(Challenge::class);
+    }
 }
