@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('frequency')->nullable();
             $table->integer('jlpt_level')->nullable();
             $table->string('meanings');
-            $table->string('readings_on');
-            $table->string('readings_kun');
+            $table->string('readings_on')->nullable();
+            $table->string('readings_kun')->nullable();
             $table->string('radicals')->nullable();
             $table->timestamps();
         });

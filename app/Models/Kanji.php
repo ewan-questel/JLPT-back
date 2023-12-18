@@ -18,14 +18,16 @@ class Kanji extends Model
     
     protected $fillable = [
         'character',
+        'strokes',
+        'grade',
+        'frequency',
         'jlpt_level',
         'meanings',
         'readings_on',
         'readings_kun',
-        'strokes',
         'radicals',
     ];
-
+    
     /**
      * Define the relationship with users who have learned this kanji.
      *

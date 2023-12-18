@@ -33,6 +33,7 @@ class KanjiSeeder extends Seeder
                     'meanings' => implode(', ', $kanjiData['meanings']),
                     'readings_on' => implode(', ', $kanjiData['readings_on']),
                     'readings_kun' => implode(', ', $kanjiData['readings_kun']),
+                    'radicals' => implode(', ', $kanjiData['wk_radicals'] ?? []),
                     // Add other attributes as needed
                 ]);
             }
