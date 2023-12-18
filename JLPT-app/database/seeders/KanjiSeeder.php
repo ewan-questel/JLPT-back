@@ -22,14 +22,18 @@ class KanjiSeeder extends Seeder
 
         // Insert data into the kanji table
         foreach ($data as $character => $kanjiData) {
-            Kanji::create([
-                'character' => $character,
-                'strokes' => $kanjiData['strokes'],
-                'jlpt_level' => $kanjiData['jlpt_new'] ?? null,
-                'meanings' => implode(', ', $kanjiData['meanings']),
-                'readings_on' => implode(', ', $kanjiData['readings_on']),
-                'readings_kun' => implode(', ', $kanjiData['readings_kun']),
-            ]);
+            // Check if jlpt_new is not null before inserting
+            if (!is_null($kanjiData['jlpt_new'])) {
+                Kanji::create([
+                    'character' => $character,
+                    'strokes' => $kanjiData['strokes'],
+                    'jlpt_level' => $kanjiData['jlpt_new'],
+                    'meanings' => implode(', ', $kanjiData['meanings']),
+                    'readings_on' => implode(', ', $kanjiData['readings_on']),
+                    'readings_kun' => implode(', ', $kanjiData['readings_kun']),
+                    // Add other attributes as needed
+                ]);
+            }
         }
     }
 }
