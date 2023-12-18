@@ -10,10 +10,12 @@ class Kanji extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The table associated with the model.
      *
-     * @var array<int, string>
+     * @var string
      */
+    protected $table = 'kanji';
+    
     protected $fillable = [
         'character',
         'jlpt_level',

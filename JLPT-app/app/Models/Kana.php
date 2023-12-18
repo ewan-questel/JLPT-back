@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Kana extends Model
 {
     use HasFactory;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'kana';
 
     /**
      * The attributes that are mass assignable.
