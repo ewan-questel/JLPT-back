@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KanjiSeeder::class,
             KanaSeeder::class,
+            UserSeeder::class,
             // Add more seeders if needed
         ]);
 
