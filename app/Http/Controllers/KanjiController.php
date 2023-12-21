@@ -13,4 +13,15 @@ class KanjiController extends Controller
         $kanji = Kanji::all();
         return response()->json($kanji);
     }
+
+    public function show($id)
+    {
+        $kanji = Kanji::find($id);
+
+        if (!$kanji) {
+            return response()->json(['error' => 'Kanji not found'], 404);
+        }
+
+        return response()->json($kanji);
+    }
 }

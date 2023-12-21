@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/kanji', [KanjiController::class, 'index']);
+
+Route::get('/kanji/{id}', [KanjiController::class, 'show']);
