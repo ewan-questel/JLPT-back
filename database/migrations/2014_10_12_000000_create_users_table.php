@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('name')->default('');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('password')->nullable();
             $table->boolean('admin')->default(false);
-            //$table->string('password');
+            $table->string('oauth_provider')->nullable();
+            $table->string('oauth_provider_id')->nullable()->unique();
+            $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
